@@ -7,6 +7,7 @@ package com.mundo;
 
 import com.example.PersistenceManager;
 import com.example.models.Competitor;
+import com.example.models.User;
 
 import javax.persistence.EntityManager;
 
@@ -14,7 +15,6 @@ import javax.persistence.EntityManager;
  *
  * @author jdgal
  */
-
 public class Main {
 
     public static void main(String[] args) {
@@ -37,6 +37,12 @@ public class Main {
                 "Colombia",
                 false
         );
+
+        User u = new User("admin", "1234", "ADMIN");
+
+        em.getTransaction().begin();
+        em.persist(u);
+        em.getTransaction().commit();
 
         try {
             // Iniciar transacción
