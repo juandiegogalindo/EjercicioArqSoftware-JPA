@@ -6,14 +6,16 @@
 package com.example.models;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author jdgal
  */
 @Entity
+@XmlRootElement   // 👈 Permite que JAX-RS serialice a JSON/XML
 public class Competitor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,11 +26,11 @@ public class Competitor implements Serializable {
 
     @Column(name = "create_at", updatable = false)
     @Temporal(TemporalType.DATE)
-    private Calendar createdAt;
+    private Date createdAt;
 
     @Column(name = "updated_at")
     @Temporal(TemporalType.DATE)
-    private Calendar updatedAt;
+    private Date updatedAt;
 
     private String name;
     private String surname;
@@ -40,8 +42,7 @@ public class Competitor implements Serializable {
     private String country;
     private boolean winner;
 
-    public Competitor() {
-    }
+    public Competitor() {}
 
     public Competitor(String name, String surname, int age, String telephone,
             String cellphone, String address, String city,
@@ -59,92 +60,45 @@ public class Competitor implements Serializable {
 
     @PrePersist
     public void prePersist() {
-        this.createdAt = this.updatedAt = Calendar.getInstance();
+        this.createdAt = this.updatedAt = new Date();
     }
 
     @PreUpdate
     public void preUpdate() {
-        this.updatedAt = Calendar.getInstance();
+        this.updatedAt = new Date();
     }
 
     // Getters y Setters
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
+    public String getSurname() { return surname; }
+    public void setSurname(String surname) { this.surname = surname; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
 
-    public String getSurname() {
-        return surname;
-    }
+    public String getTelephone() { return telephone; }
+    public void setTelephone(String telephone) { this.telephone = telephone; }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+    public String getCellphone() { return cellphone; }
+    public void setCellphone(String cellphone) { this.cellphone = cellphone; }
 
-    public int getAge() {
-        return age;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 
-    public String getTelephone() {
-        return telephone;
-    }
+    public String getCountry() { return country; }
+    public void setCountry(String country) { this.country = country; }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
+    public boolean isWinner() { return winner; }
+    public void setWinner(boolean winner) { this.winner = winner; }
 
-    public String getCellphone() {
-        return cellphone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public boolean isWinner() {
-        return winner;
-    }
-
-    public void setWinner(boolean winner) {
-        this.winner = winner;
-    }
+    public Date getCreatedAt() { return createdAt; }
+    public Date getUpdatedAt() { return updatedAt; }
 }
