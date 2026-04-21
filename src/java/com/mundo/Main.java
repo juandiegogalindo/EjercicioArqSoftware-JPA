@@ -7,7 +7,6 @@ package com.mundo;
 
 import com.example.PersistenceManager;
 import com.example.models.Competitor;
-import com.example.models.User;
 
 import javax.persistence.EntityManager;
 
@@ -19,13 +18,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Crear EntityManager
         EntityManager em = PersistenceManager
                 .getInstance()
                 .getEntityManagerFactory()
                 .createEntityManager();
 
-        // Crear objeto
+        // Crear objeto Competitor con email y password
         Competitor c = new Competitor(
                 "Juan",
                 "Perez",
@@ -35,23 +33,14 @@ public class Main {
                 "Calle 123",
                 "Bogota",
                 "Colombia",
-                false
+                false,
+                "juan@example.com",   // 👈 nuevo campo email
+                "1234"                // 👈 nuevo campo password
         );
 
-        User u = new User("admin", "1234", "ADMIN");
-
-        em.getTransaction().begin();
-        em.persist(u);
-        em.getTransaction().commit();
-
         try {
-            // Iniciar transacción
             em.getTransaction().begin();
-
-            // Guardar en BD
             em.persist(c);
-
-            // Confirmar
             em.getTransaction().commit();
 
             System.out.println("✅ Competitor guardado con ID: " + c.getId());
@@ -59,8 +48,8 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
             em.getTransaction().rollback();
+        } finally {
+            em.close();
         }
-
-        em.close();
     }
 }

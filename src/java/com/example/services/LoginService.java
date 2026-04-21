@@ -6,7 +6,8 @@
 package com.example.services;
 
 import com.example.PersistenceManager;
-import com.example.models.User;
+import com.example.models.Competitor;
+import java.util.List;
 import javax.persistence.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,7 +26,7 @@ public class LoginService {
     @Path("/auth")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(User user) {
+    public Response login(Competitor credentials) {
 
         EntityManager em = PersistenceManager
                 .getInstance()
@@ -33,21 +34,21 @@ public class LoginService {
                 .createEntityManager();
 
         try {
-            TypedQuery<User> q = em.createQuery(
-                "SELECT u FROM User u WHERE u.username = :username AND u.password = :password",
-                User.class
+            TypedQuery<Competitor> q = em.createQuery(
+                "SELECT c FROM Competitor c WHERE c.email = :email AND c.password = :password",
+                Competitor.class
             );
-            q.setParameter("username", user.getUsername());
-            q.setParameter("password", user.getPassword());
+            q.setParameter("email", credentials.getEmail());
+            q.setParameter("password", credentials.getPassword());
 
-            User result = q.getSingleResult();
+            List<Competitor> results = q.getResultList();
 
+            if (results.isEmpty()) {
+                throw new NotAuthorizedException("Credenciales inválidas");
+            }
+
+            Competitor result = results.get(0); // primer coincidencia
             return Response.ok(result).build();
-
-        } catch (NoResultException e) {
-            return Response.status(401)
-                    .entity("Credenciales inválidas")
-                    .build();
 
         } finally {
             em.close();

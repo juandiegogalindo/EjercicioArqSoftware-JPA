@@ -14,8 +14,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author jdgal
  */
+
 @Entity
-@XmlRootElement   // 👈 Permite que JAX-RS serialice a JSON/XML
+@XmlRootElement   // Permite que JAX-RS serialice a JSON/XML
 public class Competitor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,6 +33,13 @@ public class Competitor implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
 
+    // 👇 Nuevos campos para login
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
     private String name;
     private String surname;
     private int age;
@@ -46,7 +54,7 @@ public class Competitor implements Serializable {
 
     public Competitor(String name, String surname, int age, String telephone,
             String cellphone, String address, String city,
-            String country, boolean winner) {
+            String country, boolean winner, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -56,6 +64,8 @@ public class Competitor implements Serializable {
         this.city = city;
         this.country = country;
         this.winner = winner;
+        this.email = email;
+        this.password = password;
     }
 
     @PrePersist
@@ -71,6 +81,12 @@ public class Competitor implements Serializable {
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
