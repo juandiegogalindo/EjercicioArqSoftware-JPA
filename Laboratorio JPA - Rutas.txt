@@ -1,0 +1,36 @@
+Laboratorio JPA
+
+GET
+http://localhost:8080/EjercicioArqSoftware-JPA/api/competitors/get
+
+
+POST
+http://localhost:8080/EjercicioArqSoftware-JPA/api/competitors/add
+
+{
+  "name": "Laura",
+  "surname": "Gomez",
+  "age": 20,
+  "telephone": "123",
+  "cellphone": "300",
+  "address": "Calle 1",
+  "city": "Bogota",
+  "country": "Colombia",
+  "winner": false,
+  "email": "laura@gmail.com",
+  "password": "1234"
+}
+
+http://localhost:8080/EjercicioArqSoftware-JPA/api/login/register
+
+{
+  "username": "admin",
+  "password": "1234",
+  "role": "ADMIN"
+}
+
+http://localhost:8080/EjercicioArqSoftware-JPA/api/login/auth
+{
+  "email": "laura@gmail.com",
+  "password": "1234"
+}
