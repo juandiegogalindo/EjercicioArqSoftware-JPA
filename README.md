@@ -2,11 +2,11 @@
  
 Proyecto académico de Arquitectura de Software que implementa un sistema de **login, registro y verificación de usuarios**, junto con la gestión de un modelo `Competitor`. Las APIs REST se probaron y validaron con **Postman**.
  
-## 📋 Descripción
+## Descripción
  
 Ejercicio práctico enfocado en el uso de **JPA (Java Persistence API)** para la persistencia de datos, siguiendo una arquitectura por capas (modelos, servicios, configuración REST). El proyecto expone endpoints para el registro/autenticación de usuarios y para la gestión de competidores.
  
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
  
 - **Java** 8.0.2
 - **JPA** (Java Persistence API)
@@ -50,7 +50,7 @@ EjercicioArqSoftware-JPA/
 └── build.xml
 ```
  
-## ⚙️ Instalación y ejecución
+## Instalación y ejecución
  
 **Requisitos previos:**
 - Java JDK 8.0.2
@@ -67,7 +67,7 @@ EjercicioArqSoftware-JPA/
 4. Ejecutar el proyecto (`Run`); NetBeans desplegará automáticamente el WAR en GlassFish.
 5. La aplicación quedará disponible en `http://localhost:8080/EjercicioArqSoftware-JPA/`
    
-## 🔌 Endpoints disponibles
+## Endpoints disponibles
  
 ### Competitors
  
@@ -121,7 +121,7 @@ POST http://localhost:8080/EjercicioArqSoftware-JPA/api/login/auth
 }
 ```
  
-## ✅ Estado del proyecto
+## Estado del proyecto
  
 Completado y funcional. Todas las APIs fueron probadas exitosamente con Postman.
  
