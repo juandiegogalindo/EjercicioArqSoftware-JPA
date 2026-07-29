@@ -14,30 +14,40 @@ Ejercicio práctico enfocado en el uso de **JPA (Java Persistence API)** para la
 - **NetBeans IDE** 8.0.2
 - **Base de datos:** JavaDB / Apache Derby (motor embebido de NetBeans)
 - **Postman** (pruebas de API)
+  
 ## 📁 Estructura del proyecto
  
 ```
 EjercicioArqSoftware-JPA/
-├── build.xml
 ├── nbproject/
-├── build/
-├── dist/
+│   ├── ant-deploy.xml
+│   ├── build-impl.xml
+│   ├── genfiles.properties
+│   ├── project.properties
+│   ├── project.xml
+│   └── rest-build.xml
 ├── setup/
+│   └── glassfish-resources.xml
+├── src/
+│   ├── conf/
+│   │   ├── MANIFEST.MF
+│   │   └── persistence.xml
+│   └── java/com/
+│       ├── example/
+│       │   ├── models/
+│       │   │   └── Competitor.java
+│       │   ├── services/
+│       │   │   ├── CompetitorService.java
+│       │   │   └── LoginService.java
+│       │   ├── PersistenceManager.java
+│       │   └── RestConfig.java
+│       └── mundo/
+│           └── Main.java
 ├── web/
-└── src/
-    ├── conf/
-    └── java/
-        └── com/
-            ├── mundo/
-            │   └── Main.java
-            └── example/
-                ├── PersistenceManager.java
-                ├── RestConfig.java
-                ├── models/
-                │   └── Competitor.java
-                └── services/
-                    ├── CompetitorService.java
-                    └── LoginService.java
+│   └── index.html
+├── .gitignore
+├── Laboratorio JPA - Rutas.txt
+└── build.xml
 ```
  
 ## ⚙️ Instalación y ejecución
@@ -46,6 +56,7 @@ EjercicioArqSoftware-JPA/
 - Java JDK 8.0.2
 - Servidor GlassFish
 - NetBeans IDE 8.0.2 (o compatible)
+  
 **Pasos:**
 1. Clonar el repositorio:
 ```bash
@@ -55,6 +66,7 @@ EjercicioArqSoftware-JPA/
 3. Verificar que el servidor GlassFish esté configurado como servidor de aplicaciones del proyecto.
 4. Ejecutar el proyecto (`Run`); NetBeans desplegará automáticamente el WAR en GlassFish.
 5. La aplicación quedará disponible en `http://localhost:8080/EjercicioArqSoftware-JPA/`
+   
 ## 🔌 Endpoints disponibles
  
 ### Competitors
