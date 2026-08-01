@@ -15,7 +15,7 @@ Ejercicio práctico enfocado en el uso de **JPA (Java Persistence API)** para la
 - **Base de datos:** JavaDB / Apache Derby (motor embebido de NetBeans)
 - **Postman** (pruebas de API)
   
-## 📁 Estructura del proyecto
+## Estructura del proyecto
  
 ```
 EjercicioArqSoftware-JPA/
@@ -125,7 +125,10 @@ POST http://localhost:8080/EjercicioArqSoftware-JPA/api/login/auth
  
 Completado y funcional. Todas las APIs fueron probadas exitosamente con Postman.
  
-## 👤 Autor
+## Autor
  
 **Juan Diego Galindo**
-Estudiante de Ingeniería de Sistemas - Septimo Semestre
+Estudiante de Ingeniería de Sistemas
+ 
+- GitHub: [@juandiegogalindo](https://github.com/juandiegogalindo)
+- LinkedIn: [Juan Diego Galindo - Full Stack](https://linkedin.com/in/jdgalindo6)
